@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="23094" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="23094"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="BetterVFExport">
+            <connections>
+                <outlet property="dialog" destination="1" id="Ouh-Ly-d56"/>
+                <outlet property="openInFinderCheckBox" destination="hZN-NZ-5QP" id="vUF-nt-eU2"/>
+                <outlet property="unicodeCheckBox" destination="hZN-NZ-5QP" id="gOI-q8-hu7"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView translatesAutoresizingMaskIntoConstraints="NO" id="1">
+            <rect key="frame" x="0.0" y="0.0" width="495" height="80"/>
+            <subviews>
+                <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SYp-cB-Rym">
+                    <rect key="frame" x="18" y="44" width="459" height="16"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Respects Axis Values parameters in VF Settings, inherits VF export settings" id="FFC-Uy-bKK">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button toolTip="Defines, whether Unicode values should be written to the file." translatesAutoresizingMaskIntoConstraints="NO" id="hZN-NZ-5QP">
+                    <rect key="frame" x="18" y="19" width="457" height="18"/>
+                    <buttonCell key="cell" type="check" title="Open in Finder after export" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="g8i-HJ-9pQ">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <accessibility description="Defines, whether Unicode values should be written to the file."/>
+                    <connections>
+                        <action selector="setOpenInFinder:" target="-2" id="Xi3-W7-W20"/>
+                    </connections>
+                </button>
+            </subviews>
+            <constraints>
+                <constraint firstItem="hZN-NZ-5QP" firstAttribute="trailing" secondItem="SYp-cB-Rym" secondAttribute="trailing" id="4AT-RE-Gab"/>
+                <constraint firstItem="hZN-NZ-5QP" firstAttribute="top" secondItem="SYp-cB-Rym" secondAttribute="bottom" constant="8" symbolic="YES" id="4Hf-O3-saI"/>
+                <constraint firstAttribute="bottom" secondItem="hZN-NZ-5QP" secondAttribute="bottom" constant="20" symbolic="YES" id="59A-dD-W96"/>
+                <constraint firstAttribute="trailing" secondItem="SYp-cB-Rym" secondAttribute="trailing" constant="20" symbolic="YES" id="Nny-uR-57z"/>
+                <constraint firstItem="SYp-cB-Rym" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="20" symbolic="YES" id="Vc2-8T-9ek"/>
+                <constraint firstItem="hZN-NZ-5QP" firstAttribute="leading" secondItem="SYp-cB-Rym" secondAttribute="leading" id="Ww3-tp-ctZ"/>
+                <constraint firstItem="SYp-cB-Rym" firstAttribute="top" secondItem="1" secondAttribute="top" constant="20" symbolic="YES" id="qdq-YZ-KML"/>
+            </constraints>
+            <point key="canvasLocation" x="-54" y="30"/>
+        </customView>
+        <userDefaultsController representsSharedInstance="YES" id="gEz-I4-vNS"/>
+    </objects>
+</document>
