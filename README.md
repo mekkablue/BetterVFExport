@@ -15,6 +15,19 @@ The plug-in expects a VF Setting with (optional) Axis Values in your exports.
 7. Optionally, you can add ranges with `min:nominal:max` as value. For example: `‌wght; 200:200:250=Thin, 250:300:350=Light, 350:400:450=Regular*, 400>700=Regular*, 450:500:550=Medium, 550:600:650=Semibold, 650:700:750=Bold, 750:800:800=Extrabold`. Note that range values do not replace the style linkings, see the double entry for `Regular` in the example. (Currently, I know of no UI that properly supports STAT table ranges.)
 8. Drag the *Axis Values* parameters in the correct order. That’s because the order of the axes in `STAT` determines the sort order of styles in the font menu. Unless you know what you are doing, you want `opsz` first, then `wdth`, then `wght`, and finally `ital` (or `slnt`).
 
+### Example Axis Values
+
+Four-axis font with axes for optical size, width, weight and italics. For each axis, add an *Axis Values* parameter in the *Variable Font Setting* in *File > Font Info > Exports.* Their values could be like this:
+
+```text
+opsz; 6=Caption, 12=Text, 48=Display
+wdth; 75=Condensed, 100=Normal*, 125=Expanded
+wght; 200=Thin, 300=Light, 400>700=Regular*, 500=Medium, 600=Semibold, 700=Bold, 800=Extrabold
+ital; 0>1=Roman*, 1=Italic
+```
+
+![BetterVFExportFontInfoScreenshot.png](Font Info window with Exports tab open, Variable Font Setting with Axis Values parameters)
+
 ## No Italic duplication in fvar PS Names
 
 The export plug-in fixes italic PostScript names in the `fvar` table. It turns name table entries like `FamilyNameItalic-MediumItalic` into `FamilyNameItalic-Medium`.
