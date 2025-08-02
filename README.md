@@ -13,7 +13,7 @@ The plug-in expects a VF Setting with (optional) Axis Values in your exports.
 5. After an elidable entry, add an asterisk `*`. For example: `wdth; 75=Condensed, 100=Normal*, 125=Expanded`.
 6. Connect style-linked values with `>`. For example: `ital; 0>1=Roman*`. If you have style-linked values, you do not need to repeat the respective discrete values.
 7. Optionally, you can add ranges with `min:nominal:max` as value. For example: `‌wght; 200:200:250=Thin, 250:300:350=Light, 350:400:450=Regular*, 400>700=Regular*, 450:500:550=Medium, 550:600:650=Semibold, 650:700:750=Bold, 750:800:800=Extrabold`. Note that range values do not replace the style linkings, see the double entry for `Regular` in the example. (Currently, I know of no UI that properly supports STAT table ranges.)
-8. Drag the *Axis Values* parameters in the correct order. That’s because the order of the axes in `STAT` determines the sort order of styles in the font menu.
+8. Drag the *Axis Values* parameters in the correct order. That’s because the order of the axes in `STAT` determines the sort order of styles in the font menu. Unless you know what you are doing, you want `opsz` first, then `wdth`, then `wght`, and finally `ital` (or `slnt`).
 
 ## No Italic duplication in fvar PS Names
 
