@@ -26,7 +26,7 @@ wght; 200=Thin, 300=Light, 400>700=Regular*, 500=Medium, 600=Semibold, 700=Bold,
 ital; 0>1=Roman*, 1=Italic
 ```
 
-![BetterVFExportFontInfoScreenshot.png](Font Info window with Exports tab open, Variable Font Setting with Axis Values parameters)
+![Font Info window with Exports tab open, Variable Font Setting with Axis Values parameters](BetterVFExportFontInfoScreenshot.png)
 
 ## No Italic duplication in fvar PS Names
 
