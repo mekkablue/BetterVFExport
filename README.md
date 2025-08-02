@@ -1,10 +1,10 @@
 # Better VF Export
 
-File Format plug-in for Glyphs 3. Exports variable fonts from Glyphs 3 with better control for STAT and fvar tables.
+Plug-in for Glyphs 3. Changes the variable font export in Glyphs 3 so that you have better control over `STAT` and `fvar` table entries.
 
 ## Define Axis Values in a VF Setting
 
-The export plug-in expects a VF Setting with (optional) Axis Values in your exports.
+The plug-in expects a VF Setting with (optional) Axis Values in your exports.
 
 1. In *Font Info > Exports,* add a *Variable Font Setting* through the plus menu at the bottom. (Or create a setting with the mekkablue script *OTVAR Maker.*)
 2. Select the *Variable Font Setting* and add custom parameters called `Axis Values` for each axis you want in the `STAT` table. Usually you want all the axes defined in *Font Info > Font* plus the Italic axis.
@@ -12,23 +12,41 @@ The export plug-in expects a VF Setting with (optional) Axis Values in your expo
 4. For each axis, add all discrete axis values in a comma-separated list of `value=name` entries, for example: `opsz; 6=Caption, 12=Text, 48=Display`.
 5. After an elidable entry, add an asterisk `*`. For example: `wdth; 75=Condensed, 100=Normal*, 125=Expanded`.
 6. Connect style-linked values with `>`. For example: `ital; 0>1=Roman*`. If you have style-linked values, you do not need to repeat the respective discrete values.
-7. Optionally, you can add ranges with `min:nominal:max` as value. For example: `‌wght; 200:200:250=Thin, 250:300:350=Light, 350:400:450=Regular*, 400>700=Regular*, 450:500:550=Medium, 550:600:650=Semibold, 650:700:750=Bold, 750:800:800=Extrabold`. Note that range values do not replace the style linkings, see the double entry for `Regular` in the example.
-8. Drag the *Axis Values* parameters in the correct value. The order of the axes in `STAT` determines the sort order of styles in the font menu.
+7. Optionally, you can add ranges with `min:nominal:max` as value. For example: `‌wght; 200:200:250=Thin, 250:300:350=Light, 350:400:450=Regular*, 400>700=Regular*, 450:500:550=Medium, 550:600:650=Semibold, 650:700:750=Bold, 750:800:800=Extrabold`. Note that range values do not replace the style linkings, see the double entry for `Regular` in the example. (Currently, I know of no UI that properly supports STAT table ranges.)
+8. Drag the *Axis Values* parameters in the correct order. That’s because the order of the axes in `STAT` determines the sort order of styles in the font menu.
 
 ## No Italic duplication in fvar PS Names
 
-The export plug-in also fixes italic PostScript names in the fvar table. It turns name table entries like `FamilyNameItalic-MediumItalic` into `FamilyNameItalic-Medium`.
+The export plug-in fixes italic PostScript names in the `fvar` table. It turns name table entries like `FamilyNameItalic-MediumItalic` into `FamilyNameItalic-Medium`.
+
+Note that the respective changes happen entirely in the `name` table.
 
 ## Installation
 
-1. Open *Window > Plugin Manager* and install the *Better VF Export* plug-in from the Plugins tab. It requires the installation of the *Python* and *FontTools* modules.
+1. Open *Window > Plugin Manager* and install the *Better VF Export* plug-in from the *Plugins* tab. It requires the installation of the *Python* and *FontTools* modules.
 2. Restart Glyphs.
+
+After the restart you should see a note at the bottom of your *File* menu that confirms that Better VF Export is active.
 
 ## Usage Instructions
 
-1. Open a multiple-master file with at least one VF Setting.
-2. *File > Export > Better VF Export,* decide if you want to open the enclosing folder after export by clicking the checkbox. The plug-in will take all other settings (export destination, webfonts) from the default (built-in) VF export settings.
-3. Press *Next.* The font will be exported.
+1. Open a multiple-master file with at least one VF Setting, if possible including Axis Values parameters.
+2. Choose *File > Export > Variable Fonts,* pick your settings as usual in the upcoming dialog, and press *Next.* 
+
+The font(s) will be exported and Better VF Export will correct `fvar`, `STAT` and `name` tables where necessary. By default, it will reveal the first of the exported fonts in Finder.
+
+If you do not want that, paste the following line *Window > Macro Panel* and press *Run:*
+
+```python
+Glyphs.defaults["com.mekkablue.BetterVFExport.openInFinder"] = False
+```
+
+To reset this setting to its default, do the same with this line:
+
+```python
+del Glyphs.defaults["com.mekkablue.BetterVFExport.openInFinder"]
+```
+
 
 ## Requirements
 
