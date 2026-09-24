@@ -316,6 +316,9 @@ class BetterVFExportCallback(GeneralPlugin):
 		# callback
 		Glyphs.addCallback(self.fontsExported_, DOCUMENTEXPORTED)
 
+		if "GLYPHS_HEADLESS" in os.environ:
+			return
+
 		# menu item
 		newMenuItem = NSMenuItem.new()
 		newMenuItem.setTitle_(self.name)
@@ -344,7 +347,7 @@ class BetterVFExportCallback(GeneralPlugin):
 			fixItalicFvar(font, fontPath)
 
 		firstExportedFontPath = exportInfo["fontFilePath"]
-		if Glyphs.defaults[openInFinderPref] and os.path.exists(firstExportedFontPath):
+		if "GLYPHS_HEADLESS" not in os.environ and Glyphs.defaults[openInFinderPref] and os.path.exists(firstExportedFontPath):
 			subprocess.call(["open", "-R", firstExportedFontPath])
 
 		return True, "VF exported successfully."
